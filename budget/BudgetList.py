@@ -23,15 +23,15 @@ class BudgetList:
         return len(self.expenses) + len(self.overages)
 
     def __iter__(self):
-        iter = iter(self.expenses)
+        self.iter_e = iter(self.expenses)
         self.iter_o = iter(self.overages)
         return self
 
     def __next__(self):
         try:
-            return next(self.iter_e)
+            return self.iter_e.__next__()
         except StopIteration as stop:
-            return next(self.iter_o)
+            return self.iter_o.__next__()
 
 
 def main():
@@ -47,10 +47,10 @@ def main():
 
     fig, ax = plt.subplots()
     labels = 'Expenses', 'Overages', 'Budget'
-    values = myBudgetList([sum_expenses, sum_overages, budget])
+    values = [myBudgetList.sum_expenses, myBudgetList.sum_overages, myBudgetList.budget]
 
     ax.bar(labels, values, color=['green', 'red', 'blue'])
-    ax.set_title('Your total epenses vs. total budget')
+    ax.set_title('Your total expenses vs. total budget')
     plt.show()
 
 
