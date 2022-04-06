@@ -22,7 +22,7 @@ def main():
         expenses.read_expenses("data/spending_data.csv")
         ''' ,
         number=100000,
-        globals=globals()
+        globals=globals(),
         ))
 
         print(timeit.timeit(stmt= 'expenses.categories_set_comprehension()',
@@ -33,11 +33,11 @@ def main():
         expenses.read_expenses("data/spending_data.csv")
         ''' ,
         number=100000,
-        globals=globals()
+        globals=globals(),
         ))
 
     fig,ax=plt.subplots()
-    labels = ['Neccessary', 'Food', 'Unnecessary']
+    labels = ['Necessary', 'Food', 'Unnecessary']
 
     divided_expenses_sum = []
     for category_exps in divided_set_comp:
